@@ -90,6 +90,6 @@
         "version": "detect"
       }
     },
-    "root": true
+    "root": false
   }
 }

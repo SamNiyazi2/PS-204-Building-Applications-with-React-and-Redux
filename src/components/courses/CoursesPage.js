@@ -5,10 +5,52 @@ import React from 'react';
 
 class CoursesPage extends React.Component {
 
+    constructor( props ) {
+        super( props );
+
+        this.state = {
+            course: {
+                title: ""
+            }
+        };
+
+        // Binding in the constructor.  Prevents having to using binding in the render function which causes a new instance of the function to be created with every render.
+        // this.handleChange = this.handleChange.bind( this );
+
+    }
+
+
+
+
+    // bind
+    handleChange = ( event ) => {
+        const course = { ...this.state.course, title: event.target.value };
+
+        // this.setState( course );
+        this.setState( { course } );
+
+    }
+
+    // Or (with bind(this) in the constructor)
+    // handleChange( event ) {
+    //     const course = { ...this.state.course, title: event.target.value };
+
+    //     // this.setState( course );
+    //     this.setState( { course } );
+
+    // }
+
+
     render() {
 
-        return <h2>Courses</h2>
-
+        return (
+            <form >
+                <h2>Courses</h2>
+                <h3>Add Course</h3>
+                <input type="test" onChange={this.handleChange} value={this.state.course.title} autoFocus />
+                <input type="submit" value="Submit" />
+            </form>
+        )
     }
 
 }
