@@ -1,0 +1,3 @@
+cd %~dp0
+call ssn__04__Dev_build_API_server
+call ssn__05__Dev_build_client
