@@ -1,9 +1,15 @@
 
+rem 02/17/2021 08:52 am - SSN
+
 cd %~dp0
 
-call C:\sams\ps\KillProcess\KillProcess_Using_MainWindowTitle.cmd "*%ssnalert% - webpack.config.dev-20200817-1539*"
+set scriptKey_20210217_0853=%~1-20210217-0853
+set port=3176
 
-rem Backup in case first line fails (title changed or lost)
-call C:\sams\ps\KillProcess\KillProcess_Using_PortNo.cmd 3128
+echo [%ssnalert%]
+
+call C:\sams\ps\KillProcess\KillProcess_Using_MainWindowTitle.cmd "*scriptKey_20210217_0853*"
+
+call C:\sams\ps\KillProcess\KillProcess_Using_PortNo.cmd %port%
 
 start %1 npm  run start:dev
