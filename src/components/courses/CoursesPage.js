@@ -2,6 +2,10 @@
 // 02/17/2021 11:15 am - SSN - [20210217-1113] - [001] - M05-08 - Create course page
 
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import * as courseActions from '../../redux/actions/courseActions';
 
 class CoursesPage extends React.Component {
 
@@ -49,6 +53,8 @@ class CoursesPage extends React.Component {
         console.log( '20210217-1714' )
         console.log( this.state.course.title );
 
+        this.props.dispatch( courseActions.createCourse( this.state.course ) )
+
     }
 
 
@@ -66,4 +72,18 @@ class CoursesPage extends React.Component {
 
 }
 
-export default CoursesPage;
+function mapStatesToProps( state ) {
+    return {
+        courses: state.courses
+    };
+}
+
+
+
+CoursesPage.propTypes = {
+
+    dispatch: PropTypes.func.isRequired
+};
+
+
+export default connect( mapStatesToProps )( CoursesPage );

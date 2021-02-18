@@ -11,7 +11,7 @@ import './index.css';
 
 import App from './components/App';
 
-import configureStore from './redux/actions/confiureStore';
+import configureStore from './redux/configureStore';
 import { Provider as ReduxProvider } from 'react-redux';
 
 const store = configureStore();
@@ -25,6 +25,6 @@ render(
     </Router>
   </ReduxProvider>,
 
-  document.getElementById('app')
+  document.getElementById( 'app' )
 
 );
