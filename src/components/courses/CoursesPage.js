@@ -50,8 +50,6 @@ class CoursesPage extends React.Component {
 
         event.preventDefault();
 
-        console.log( '20210217-1714' )
-        console.log( this.state.course.title );
 
         this.props.dispatch( courseActions.createCourse( this.state.course ) )
 
@@ -66,13 +64,17 @@ class CoursesPage extends React.Component {
                 <h3>Add Course</h3>
                 <input type="test" onChange={this.handleChange} value={this.state.course.title} autoFocus />
                 <input type="submit" value="Submit" />
+
+                {this.props.courses.map( course => (
+                    <div key="course.title"> {course.title}</div>
+                ) )}
             </form>
         )
     }
 
 }
 
-function mapStatesToProps( state ) {
+function mapStateToProps( state ) {
     return {
         courses: state.courses
     };
@@ -82,8 +84,10 @@ function mapStatesToProps( state ) {
 
 CoursesPage.propTypes = {
 
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    courses: PropTypes.array.isRequired
+
 };
 
 
-export default connect( mapStatesToProps )( CoursesPage );
+export default connect( mapStateToProps )( CoursesPage );

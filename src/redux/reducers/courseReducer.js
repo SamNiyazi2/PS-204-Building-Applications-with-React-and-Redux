@@ -7,7 +7,8 @@ export default function courseReducer( state = [], action ) {
 
         case "CREATE_COURSE":
 
-            //return [...state, { ...action.course} ];
+            // Both work.
+            // return [ ...state, { ...action.course } ];
             return [ ...state, action.course ];
 
 
