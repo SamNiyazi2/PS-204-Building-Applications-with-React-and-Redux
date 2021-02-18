@@ -6,15 +6,25 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import * as courseActions from '../../redux/actions/courseActions';
+import * as authorActions from '../../redux/actions/authorActions';
+
 import { bindActionCreators } from 'redux';
 import CourseList from './CourseList';
 
 class CoursesPage extends React.Component {
 
     componentDidMount() {
-        this.props.actions.loadCourses().catch( error => {
-            alert( 'Loadin courses failed\r\r' + error );
+
+        if ( this.props.courses.length !== 0 ) return;
+
+        this.props.loadCourses().catch( error => {
+            alert( 'Loading courses failed\r\r' + error );
         } );
+
+        this.props.loadAuthors().catch( error => {
+            alert( 'Loading authors failed\r\r' + error );
+        } );
+
     }
 
     render() {
@@ -31,13 +41,20 @@ class CoursesPage extends React.Component {
 
 function mapStateToProps( state ) {
     return {
-        courses: state.courses
+        courses: state.authors.length === 0 ? [] : state.courses.map( course => {
+            return {
+                ...course,
+                authorName: state.authors.find( a => a.id === course.authorId ).name
+            }
+        } ),
+        authors: state.authors
     };
 }
 
 function mapDispatchToProps( dispatch ) {
     return {
-        actions: bindActionCreators( courseActions, dispatch )
+        loadCourses: bindActionCreators( courseActions.loadCourses, dispatch ),
+        loadAuthors: bindActionCreators( authorActions.loadAuthors, dispatch ),
     }
 }
 
@@ -45,7 +62,9 @@ function mapDispatchToProps( dispatch ) {
 CoursesPage.propTypes = {
 
     courses: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    authors: PropTypes.array.isRequired,
+    loadCourses: PropTypes.func.isRequired,
+    loadAuthors: PropTypes.func.isRequired
 
 };
 
