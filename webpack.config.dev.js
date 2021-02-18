@@ -40,7 +40,7 @@ module.exports = {
     },
 
     plugins: [
-        webpack.DefinePlugin( {
+        new webpack.DefinePlugin( {
             "process.env.API_URL": JSON.stringify( "http://p3177.nonbs.org:3177" )
         } ),
         new HtmlWebpackPlugin( {
