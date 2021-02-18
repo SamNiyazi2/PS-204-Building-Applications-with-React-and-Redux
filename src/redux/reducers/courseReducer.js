@@ -8,9 +8,14 @@ export default function courseReducer( state = [], action ) {
 
         case actionTypes.CREATE_COURSE:
 
-            // Both work.
-            // return [ ...state, { ...action.course } ];
             return [ ...state, action.course ];
+
+
+
+        case actionTypes.LOAD_COURSES_SUCCESS:
+
+            return action.courses
+
 
 
         default:
