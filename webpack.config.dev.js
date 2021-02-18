@@ -27,6 +27,7 @@ module.exports = {
     // 02/17/2021 08:26 am - SSN - [20210217-0825] - [001] - M03-11 - Webpack: dev server
     devServer: {
         port: parseInt( process.env.port, 10 ),
+        host: 'p3176.nonbs.org',
         open: true,
         stats: 'minimal',
         overlay: true, // Overlays any errors in the browsers
@@ -39,6 +40,9 @@ module.exports = {
     },
 
     plugins: [
+        webpack.DefinePlugin( {
+            "process.env.API_URL": JSON.stringify( "http://p3177.nonbs.org:3177" )
+        } ),
         new HtmlWebpackPlugin( {
             template: "src/index.html",
             favicon: "src/favicon.ico",
