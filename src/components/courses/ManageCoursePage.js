@@ -34,10 +34,19 @@ function ManageCoursePage( { courses, authors, loadAuthors, loadCourses, ...prop
     }, [] );  // Runs only once with empty array.
 
 
+    function handleChange( event ) {
 
+        const { name, value } = event;
+
+        setCourse( prevCourse => ( {
+            ...prevCourse,
+            [ name ]: name === "authorId" ? parseInt( value, 10 ) : value
+
+        } ) );
+    }
 
     return (
-        <CourseForm course={course} errors={errors} authors={authors} />
+        <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} />
     )
 
 }
