@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 
 const CourseList = ( { courses, onDeleteClick } ) => (
   <table className="table">
+    <colgroup>
+      <col className="cssc1" />
+      <col className="cssc2" />
+      <col className="cssc3" />
+      <col className="cssc4" />
+    </colgroup>
+
     <thead>
       <tr>
         <th />

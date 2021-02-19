@@ -14,3 +14,19 @@ body {
 button[disabled] {
     cursor: not-allowed;
 }
+
+.cssc1 {
+    width: 100px;
+}
+
+.cssc2 {
+    width: 300px;
+}
+
+.cssc3 {
+    width: 140px;
+}
+
+.cssc4 {
+    width: 100px;
+}

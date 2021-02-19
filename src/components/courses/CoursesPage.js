@@ -38,13 +38,13 @@ class CoursesPage extends React.Component {
     }
 
 
-    handleDeleteCourse = course => {
+    handleDeleteCourse = async course => {
 
         let courseId = course.id;
         let courseIndex = this.props.courses.indexOf( course );
 
         toast.success( "Course deleted: " + course.title );
-        this.props.deleteCourse( course, this.state.simulateAPIError ).catch( error => {
+        await this.props.deleteCourse( course, this.state.simulateAPIError ).catch( error => {
 
             toast.error( "Failed to delete course: " + course.title, { autoClose: false } );
             this.props.loadCourse( courseId, courseIndex );
@@ -52,6 +52,9 @@ class CoursesPage extends React.Component {
             console.log( "Course delete failed. 20210219-0239" );
             console.log( error );
         } );
+
+        // This displays after the process completes when the await keyword is used.
+        toast.info( "Request was processed." );
 
     }
 
