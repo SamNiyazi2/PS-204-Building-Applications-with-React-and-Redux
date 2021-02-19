@@ -5,11 +5,16 @@ import initialState from './initialState';
 
 
 function actionTypeEndInSuccess( type ) {
-    return type.substrinct( type.length - 9 ) === "_SUCCESS";
+
+    return type.substring( type.length - 8 ) === "_SUCCESS";
 }
 
 
 export default function apiCallsStatusReducer( state = initialState.apiCallsInProgress, action ) {
+
+    console.log( 'apiCallsStatusReducer - 20210219-0107' );
+    console.log( 'state:' );
+    console.log( state );
 
     if ( action.type == actionTypes.BEGIN_API_CALL ) {
         return state + 1;

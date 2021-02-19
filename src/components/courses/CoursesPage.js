@@ -37,19 +37,28 @@ class CoursesPage extends React.Component {
 
     render() {
 
+        console.log( 'render - 20210219-0049' );
+        console.log( this.props.loading );
+
         return (
             <>
                 {this.state.redirectToAddCoursePage && <Redirect to="/course" />}
                 <h2>Courses</h2>
-                <Spinner />
-                <button
-                    style={{ marginBottom: 20 }}
-                    className="btn btn-primary add-course"
-                    onClick={() => this.setState( { redirectToAddCoursePage: true } )}>
-                    Add Course
-                </button>
 
-                <CourseList courses={this.props.courses} />
+                {this.props.loading ? <Spinner /> : (
+
+                    <>
+                        <button
+                            style={{ marginBottom: 20 }}
+                            className="btn btn-primary add-course"
+                            onClick={() => this.setState( { redirectToAddCoursePage: true } )}>
+                            Add Course
+                        </button>
+
+                        <CourseList courses={this.props.courses} />
+                    </>
+                )}
+
             </>
         )
     }
@@ -57,6 +66,10 @@ class CoursesPage extends React.Component {
 }
 
 function mapStateToProps( state ) {
+
+    console.log( 'mapStateToProps - 20210219-0104' );
+    console.log( state );
+
     return {
         courses: state.authors.length === 0 ? [] : state.courses.map( course => {
             return {
@@ -64,7 +77,8 @@ function mapStateToProps( state ) {
                 authorName: state.authors.find( a => a.id === course.authorId ).name
             }
         } ),
-        authors: state.authors
+        authors: state.authors,
+        loading: state.apiCallsInProgress > 0
     };
 }
 
@@ -81,7 +95,8 @@ CoursesPage.propTypes = {
     courses: PropTypes.array.isRequired,
     authors: PropTypes.array.isRequired,
     loadCourses: PropTypes.func.isRequired,
-    loadAuthors: PropTypes.func.isRequired
+    loadAuthors: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired
 
 };
 

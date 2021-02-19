@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 import CourseForm from './CourseForm';
 import { newCourse } from '../../../tools/mockData';
+import Spinner from '../common/spinner';
 
 
 //function ManageCoursePage( { courses, authors, loadAuthors, loadCourses, saveCourse, ...props2 } ) {
@@ -80,7 +81,18 @@ function ManageCoursePage( props ) {
 
 
     return (
-        <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSaveRequest} />
+        <>
+            {authors.length === 0 || courses.length === 0 ? (
+
+                <Spinner />
+
+            ) : (
+
+                    <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSaveRequest} />
+                )
+            }
+
+        </>
     )
 
 }
