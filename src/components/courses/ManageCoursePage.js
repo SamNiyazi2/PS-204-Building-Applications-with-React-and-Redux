@@ -1,17 +1,16 @@
 
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { loadCourses } from '../../redux/actions/courseActions';
 import { loadAuthors } from '../../redux/actions/authorActions';
 import PropTypes from 'prop-types';
 
 
-class ManageCoursePage extends Component {
+function ManageCoursePage( { courses, authors, loadAuthors, loadCourses } ) {
 
 
-    componentDidMount() {
+    useEffect( () => {
 
-        const { courses, authors, loadAuthors, loadCourses } = this.props;
 
         if ( courses.length === 0 ) {
             loadCourses().catch( error => {
@@ -25,17 +24,16 @@ class ManageCoursePage extends Component {
             } );
 
         }
-    }
+    }, [] );  // Runs only once with empty array.
 
 
 
-    render() {
-        return (
-            <div>
-                <h2>Manage Course</h2>
-            </div>
-        )
-    }
+
+    return (
+        <div>
+            <h2>Manage Course</h2>
+        </div>
+    )
 
 }
 
