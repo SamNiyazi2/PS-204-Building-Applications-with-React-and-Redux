@@ -1,5 +1,7 @@
 
 cd %~dp0
 
-code .
+rem %1 does work for passing in file name to open.
+
+code . %1
 

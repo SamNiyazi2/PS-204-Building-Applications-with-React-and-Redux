@@ -7,7 +7,7 @@ set scriptKey_20210218_0648=%~1-20210218-0648
 set port=3177
 
 
-call C:\sams\ps\KillProcess\KillProcess_Using_MainWindowTitle.cmd "*scriptKey_20210218_0648*"
+call C:\sams\ps\KillProcess\KillProcess_Using_MainWindowTitle.cmd "*%scriptKey_20210218_0648%*"
 
 call C:\sams\ps\KillProcess\KillProcess_Using_PortNo.cmd %port%
 
