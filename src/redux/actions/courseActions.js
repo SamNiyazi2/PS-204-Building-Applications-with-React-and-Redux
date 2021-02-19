@@ -3,18 +3,19 @@ import * as actionTypes from './actionTypes';
 import * as courseApi from '../../api/courseApi';
 
 
-export function createCourse( course ) {
-    return {
-        type: actionTypes.CREATE_COURSE,
-        course
-    }
+
+export function loadCoursesSuccess( courses ) {
+    return { type: actionTypes.LOAD_COURSES_SUCCESS, courses };
 }
 
 
-export function loadCoursesSuccess( courses ) {
+export function createCourseSuccess( course ) {
+    return { type: actionTypes.CREATE_COURSE_SUCCESS, course };
+}
 
-    return { type: actionTypes.LOAD_COURSES_SUCCESS, courses };
 
+export function updateCourseSuccess( course ) {
+    return { type: actionTypes.UPDATE_COURSE_SUCCESS, course };
 }
 
 
@@ -31,4 +32,23 @@ export function loadCourses() {
             throw response;
         } );
     }
+}
+
+
+export function saveCourse( course ) {
+
+    //eslint-disable-next-line no-unused-vars
+    return function ( dispatch, getState ) {
+
+        return courseApi.saveCourse( course )
+
+            .then( savedCourse => {
+                course.id ? dispatch( updateCourseSuccess( savedCourse ) ) : dispatch( createCourseSuccess( savedCourse ) );
+            } )
+
+            .catch( error => {
+                throw error;
+            } );
+    }
+
 }
