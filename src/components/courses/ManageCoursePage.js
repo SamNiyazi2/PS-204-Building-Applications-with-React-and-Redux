@@ -1,10 +1,9 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import * as courseActions from '../../redux/actions/courseActions';
-import * as authorActions from '../../redux/actions/authorActions';
+import { loadCourses } from '../../redux/actions/courseActions';
+import { loadAuthors } from '../../redux/actions/authorActions';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 
 
 class ManageCoursePage extends Component {
@@ -12,16 +11,16 @@ class ManageCoursePage extends Component {
 
     componentDidMount() {
 
-        const { courses, authors, actions } = this.props;
+        const { courses, authors, loadAuthors, loadCourses } = this.props;
 
         if ( courses.length === 0 ) {
-            actions.loadCourses().catch( error => {
+            loadCourses().catch( error => {
                 alert( 'Loading courses failed.\n\n' + error );
             } );
         }
 
         if ( authors.length === 0 ) {
-            actions.loadAuthors().catch( error => {
+            loadAuthors().catch( error => {
                 alert( "Loading authors failed.\n\n" + error );
             } );
 
@@ -45,7 +44,8 @@ class ManageCoursePage extends Component {
 ManageCoursePage.propTypes = {
     authors: PropTypes.array.isRequired,
     courses: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    loadAuthors: PropTypes.func.isRequired,
+    loadCourses: PropTypes.func.isRequired
 }
 
 
@@ -53,18 +53,16 @@ function mapStateToProps( state ) {
 
     return {
         courses: state.courses,
-        authros: state.authors
+        authors: state.authors
     }
 }
 
 
-function mapSispatchToProps( dispatch ) {
-    return {
-        actions: {
-            loadCourses: bindActionCreators( courseActions.loadCourses, dispatch ),
-            loadAuthors: bindActionCreators( authorActions.loadAuthors, dispatch )
-        }
-    }
+const mapSispatchToProps = {
+
+    loadCourses: loadCourses,
+    loadAuthors: loadAuthors
+
 }
 
 export default connect( mapStateToProps, mapSispatchToProps )( ManageCoursePage );
