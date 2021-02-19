@@ -12,12 +12,14 @@ import { bindActionCreators } from 'redux';
 import CourseList from './CourseList';
 import { Redirect } from 'react-router-dom';
 import Spinner from '../common/spinner';
+import { toast } from 'react-toastify';
 
 class CoursesPage extends React.Component {
 
 
     state = {
-        redirectToAddCoursePage: false
+        redirectToAddCoursePage: false,
+        simulateAPIError: false
     };
 
 
@@ -35,6 +37,25 @@ class CoursesPage extends React.Component {
 
     }
 
+
+    handleDeleteCourse = course => {
+
+        let courseId = course.id;
+        let courseIndex = this.props.courses.indexOf( course );
+
+        toast.success( "Course deleted: " + course.title );
+        this.props.deleteCourse( course, this.state.simulateAPIError ).catch( error => {
+
+            toast.error( "Failed to delete course: " + course.title, { autoClose: false } );
+            this.props.loadCourse( courseId, courseIndex );
+
+            console.log( "Course delete failed. 20210219-0239" );
+            console.log( error );
+        } );
+
+    }
+
+
     render() {
 
         return (
@@ -51,8 +72,8 @@ class CoursesPage extends React.Component {
                             onClick={() => this.setState( { redirectToAddCoursePage: true } )}>
                             Add Course
                         </button>
-
-                        <CourseList courses={this.props.courses} />
+                        <p><input type="checkbox" onChange={( e ) => this.setState( { simulateAPIError: e.target.checked } )} /> &nbsp; Simulate API error on delete </p>
+                        <CourseList courses={this.props.courses} onDeleteClick={this.handleDeleteCourse} />
                     </>
                 )}
 
@@ -80,6 +101,9 @@ function mapDispatchToProps( dispatch ) {
     return {
         loadCourses: bindActionCreators( courseActions.loadCourses, dispatch ),
         loadAuthors: bindActionCreators( authorActions.loadAuthors, dispatch ),
+        deleteCourse: bindActionCreators( courseActions.deleteCourse, dispatch ),
+        loadCourse: bindActionCreators( courseActions.loadCourse, dispatch ),
+
     }
 }
 
@@ -89,8 +113,10 @@ CoursesPage.propTypes = {
     courses: PropTypes.array.isRequired,
     authors: PropTypes.array.isRequired,
     loadCourses: PropTypes.func.isRequired,
+    loadCourse: PropTypes.func.isRequired,
     loadAuthors: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired,
+    deleteCourse: PropTypes.func.isRequired,
 
 };
 
