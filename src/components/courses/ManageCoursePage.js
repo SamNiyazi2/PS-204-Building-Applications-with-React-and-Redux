@@ -70,7 +70,10 @@ function ManageCoursePage( props ) {
     function handleSaveRequest( event ) {
 
         event.preventDefault();
-        saveCourse( course );
+        saveCourse( course ).then( () => {
+            props.history.push( '/courses' );
+
+        } );
     }
 
 
@@ -88,7 +91,8 @@ ManageCoursePage.propTypes = {
     loadAuthors: PropTypes.func.isRequired,
     loadCourses: PropTypes.func.isRequired,
     saveCourse: PropTypes.func.isRequired,
-    course: PropTypes.object.isRequired
+    course: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
 }
 
 
