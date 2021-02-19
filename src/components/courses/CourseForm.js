@@ -38,7 +38,7 @@ const CourseForm = ( {
           text: author.name
         } ) )}
         onChange={onChange}
-        error={errors.author}
+        error={errors.authorId}
       />
 
       <TextInput
