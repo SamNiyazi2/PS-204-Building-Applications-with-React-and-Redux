@@ -12,10 +12,6 @@ function actionTypeEndInSuccess( type ) {
 
 export default function apiCallsStatusReducer( state = initialState.apiCallsInProgress, action ) {
 
-    console.log( 'apiCallsStatusReducer - 20210219-0107' );
-    console.log( 'state:' );
-    console.log( state );
-
     if ( action.type == actionTypes.BEGIN_API_CALL ) {
         return state + 1;
 

@@ -8,35 +8,17 @@ import PropTypes from 'prop-types';
 import CourseForm from './CourseForm';
 import { newCourse } from '../../../tools/mockData';
 import Spinner from '../common/spinner';
+import { toast } from 'react-toastify';
 
 
 //function ManageCoursePage( { courses, authors, loadAuthors, loadCourses, saveCourse, ...props2 } ) {
 function ManageCoursePage( props ) {
 
-
-    // console.log( 'ManageCoursePage' );
-    // console.log( 'props:' );
-    // console.log( props );
-
-
-
     let { courses, authors, loadAuthors, loadCourses, saveCourse } = props;
-
-    // console.log( 'props:' );
-    // console.log( props );
-    // console.log( 'courses:' );
-    // console.log( courses );
-
-
-    // console.log( '=================================================' );
-
 
     const [ course, setCourse ] = useState( props.course );
     const [ errors, setErrors ] = useState( {} );
-
-
-    // console.log( 'course:' );
-    // console.log( course );
+    const [ saving, setSaving ] = useState( false );
 
     useEffect( () => {
 
@@ -73,8 +55,20 @@ function ManageCoursePage( props ) {
     function handleSaveRequest( event ) {
 
         event.preventDefault();
+
+        setSaving( true );
+
         saveCourse( course ).then( () => {
+
+
             props.history.push( '/courses' );
+            toast.success( "Course was saved." );
+
+
+        } ).catch( error => {
+            toast.error( "Failed to save course." );
+            console.log( 'ManageCoursepage - handleSaveRequest - 20210219-0135' );
+            console.log( error );
 
         } );
     }
@@ -88,7 +82,7 @@ function ManageCoursePage( props ) {
 
             ) : (
 
-                    <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSaveRequest} />
+                    <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSaveRequest} saving={saving} />
                 )
             }
 

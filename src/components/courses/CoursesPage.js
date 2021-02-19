@@ -37,9 +37,6 @@ class CoursesPage extends React.Component {
 
     render() {
 
-        console.log( 'render - 20210219-0049' );
-        console.log( this.props.loading );
-
         return (
             <>
                 {this.state.redirectToAddCoursePage && <Redirect to="/course" />}
@@ -66,9 +63,6 @@ class CoursesPage extends React.Component {
 }
 
 function mapStateToProps( state ) {
-
-    console.log( 'mapStateToProps - 20210219-0104' );
-    console.log( state );
 
     return {
         courses: state.authors.length === 0 ? [] : state.courses.map( course => {
