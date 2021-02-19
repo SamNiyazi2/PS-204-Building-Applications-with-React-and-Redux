@@ -66,9 +66,16 @@ function ManageCoursePage( props ) {
 
 
         } ).catch( error => {
+
+            setSaving( false );
+
             toast.error( "Failed to save course." );
+
+            setErrors( { onSave: error.message } );
+
             console.log( 'ManageCoursepage - handleSaveRequest - 20210219-0135' );
             console.log( error );
+
 
         } );
     }

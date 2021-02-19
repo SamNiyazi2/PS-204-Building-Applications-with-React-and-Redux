@@ -1,7 +1,7 @@
 
 import * as actionTypes from './actionTypes';
 import * as authorApi from '../../api/authorApi';
-import { beginApiCall } from './apiStatusActions';
+import { apiCallError, beginApiCall } from './apiStatusActions';
 
 
 
@@ -22,9 +22,10 @@ export function loadAuthors() {
 
             dispatch( loadAuthorsSuccess( authors ) );
 
-        } ).catch( response => {
+        } ).catch( error => {
 
-            throw response;
+            dispatch( apiCallError( error ) );
+            throw error;
         } );
     }
 }
