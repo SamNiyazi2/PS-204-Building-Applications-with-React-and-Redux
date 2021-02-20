@@ -6,7 +6,13 @@
     "start:dev": "title %scriptKey_20210217_0853% && webpack-dev-server --config webpack.config.dev.js",
     "prestart:api": "node tools/createMockdb.js",
     "start:api": "title %scriptKey_20210218_0648% && node tools/apiServer.js  ",
-    "test": "title %scriptKey_20210219_0525% && jest --watch"
+    "test": "title %scriptKey_20210219_0525% && jest --watch",
+    "test:CI": "jest",
+    "clean:build": "rimraf ./build && mkdir build",
+    "prebuild": "run-p clean:build test:CI",
+    "build": "webpack --config webpack.config.prod.js",
+    "postbuild": "run-p start:api serve:build",
+    "serve:build": "http-server ./build"
   },
   "jest": {
     "setupFiles": [
