@@ -13,13 +13,13 @@ import CourseList from './CourseList';
 import { Redirect } from 'react-router-dom';
 import Spinner from '../common/spinner';
 import { toast } from 'react-toastify';
+import { simulateAPIError } from '../../redux/actions/simulateAPIErrorActions';
 
 class CoursesPage extends React.Component {
 
 
     state = {
-        redirectToAddCoursePage: false,
-        simulateAPIError: false
+        redirectToAddCoursePage: false
     };
 
 
@@ -44,18 +44,25 @@ class CoursesPage extends React.Component {
         let courseIndex = this.props.courses.indexOf( course );
 
         toast.success( "Course deleted: " + course.title );
-        await this.props.deleteCourse( course, this.state.simulateAPIError ).catch( error => {
 
-            toast.error( "Failed to delete course: " + course.title, { autoClose: false } );
-            this.props.loadCourse( courseId, courseIndex );
+        await this.props.deleteCourse( course, this.props.simulateAPIError_local )
 
-            console.log( "Course delete failed. 20210219-0239" );
-            console.log( error );
-        } );
+            .catch( error => {
+
+                toast.error( "Failed to delete course: " + course.title, { autoClose: false } );
+                this.props.loadCourse( courseId, courseIndex );
+
+                console.log( "Course delete failed. 20210219-0239" );
+                console.log( error );
+            } );
 
         // This displays after the process completes when the await keyword is used.
-        toast.info( "Request was processed." );
+        toast.info( "Request was processed. (async/await)", { autoClose: 6000 } );
 
+    }
+
+    setSimulateAPIError( setting ) {
+        this.props.simulateAPIError( setting );
     }
 
 
@@ -75,7 +82,7 @@ class CoursesPage extends React.Component {
                             onClick={() => this.setState( { redirectToAddCoursePage: true } )}>
                             Add Course
                         </button>
-                        <p><input type="checkbox" onChange={( e ) => this.setState( { simulateAPIError: e.target.checked } )} /> &nbsp; Simulate API error on delete </p>
+                        <p><input type="checkbox" onChange={( e ) => this.setSimulateAPIError( e.target.checked )} /> &nbsp; Simulate API error on delete </p>
                         <CourseList courses={this.props.courses} onDeleteClick={this.handleDeleteCourse} />
                     </>
                 )}
@@ -96,7 +103,8 @@ function mapStateToProps( state ) {
             }
         } ),
         authors: state.authors,
-        loading: state.apiCallsInProgress > 0
+        loading: state.apiCallsInProgress > 0,
+        simulateAPIError_local: state.simulateAPIError
     };
 }
 
@@ -106,6 +114,7 @@ function mapDispatchToProps( dispatch ) {
         loadAuthors: bindActionCreators( authorActions.loadAuthors, dispatch ),
         deleteCourse: bindActionCreators( courseActions.deleteCourse, dispatch ),
         loadCourse: bindActionCreators( courseActions.loadCourse, dispatch ),
+        simulateAPIError: bindActionCreators( simulateAPIError, dispatch ),
 
     }
 }
@@ -120,6 +129,8 @@ CoursesPage.propTypes = {
     loadAuthors: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     deleteCourse: PropTypes.func.isRequired,
+    simulateAPIError: PropTypes.func.isRequired,
+    simulateAPIError_local: PropTypes.bool.isRequired,
 
 };
 

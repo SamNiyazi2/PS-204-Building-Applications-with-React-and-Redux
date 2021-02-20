@@ -46,8 +46,8 @@ describe( 'CourseForm:', () => {
 
         const { getByText, debug } = renderCourseForm( { saving: true } );
 
-        console.log( "debug output:" );
-        debug();
+        // console.log( "debug output:" );
+        // debug();
 
         getByText( "Saving..." );
 

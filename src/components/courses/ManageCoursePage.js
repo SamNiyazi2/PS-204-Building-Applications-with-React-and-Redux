@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 
 
 //function ManageCoursePage( { courses, authors, loadAuthors, loadCourses, saveCourse, ...props2 } ) {
-function ManageCoursePage( props ) {
+export function ManageCoursePage( props ) {
 
     let { courses, authors, loadAuthors, loadCourses, saveCourse } = props;
 
@@ -24,20 +24,24 @@ function ManageCoursePage( props ) {
 
 
         if ( courses.length === 0 ) {
-            loadCourses().catch( error => {
-                alert( 'Loading courses failed.\n\n' + error );
-            } );
+            loadCourses()
+                .catch( error => {
+                    alert( 'Loading courses failed.' );
+                    alert( error );
+                } );
         } else {
             setCourse( { ...props.course } );
         }
 
         if ( authors.length === 0 ) {
-            loadAuthors().catch( error => {
-                alert( "Loading authors failed.\n\n" + error );
-            } );
+            loadAuthors()
+                .catch( error => {
+                    alert( "Loading authors failed." );
+                    alert( error );
+                } );
 
         }
-    }, [ props.course ] );  // Runs only once with empty array.
+    }, [ props.course, props.courses, props.authors ] );  // Runs only once with empty array.
 
 
     function handleChange( event ) {
@@ -133,7 +137,7 @@ function mapStateToProps( state, ownProps ) {
 
     const slug = ownProps.match.params.slug;
 
-    const courseSelected = slug && state.courses.length ? state.courses.find( r => r.slug === slug ) : newCourse;
+    const courseSelected = slug && state.courses.length ? state.courses.find( r => r.slug === slug ) : ownProps.course ? ownProps.course : newCourse;
 
     return {
         courses: state.courses,
