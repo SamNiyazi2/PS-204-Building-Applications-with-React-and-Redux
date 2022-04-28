@@ -1,0 +1,20 @@
+// 04/28/2022 10:47 am - SSN
+// https://tjaddison.com/blog/2021/03/updating-babel-eslint-to-babeleslint-parser-for-react-apps/
+{
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "requireConfigFile": false,
+        "babelOptions": {
+            "presets": [
+                "@babel/preset-react"
+            ]
+        },
+        "ecmaVersion": 2015
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "import/no-named-as-default": 0
+    }
+}

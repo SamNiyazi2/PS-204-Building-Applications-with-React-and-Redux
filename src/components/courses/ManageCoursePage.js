@@ -111,8 +111,8 @@ export function ManageCoursePage( props ) {
 
             ) : (
 
-                    <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSaveRequest} saving={saving} />
-                )
+                <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSaveRequest} saving={saving} />
+            )
             }
 
         </>
@@ -129,13 +129,18 @@ ManageCoursePage.propTypes = {
     loadCourses: PropTypes.func.isRequired,
     saveCourse: PropTypes.func.isRequired,
     course: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+    // history: PropTypes.object.isRequired
 }
 
 
 function mapStateToProps( state, ownProps ) {
 
-    const slug = ownProps.match.params.slug;
+    let slug = 0;
+
+    if ( ownProps?.match?.params?.slug ) {
+
+        slug = ownProps.match.params.slug;
+    }
 
     const courseSelected = slug && state.courses.length ? state.courses.find( r => r.slug === slug ) : ownProps.course ? ownProps.course : newCourse;
 

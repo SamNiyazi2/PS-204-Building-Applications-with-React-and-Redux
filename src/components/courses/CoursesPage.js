@@ -10,7 +10,13 @@ import * as authorActions from '../../redux/actions/authorActions';
 
 import { bindActionCreators } from 'redux';
 import CourseList from './CourseList';
-import { Redirect } from 'react-router-dom';
+
+
+// 04/28/2022 11:24 pm - SSN
+// import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+
+
 import Spinner from '../common/spinner';
 import { toast } from 'react-toastify';
 import { simulateAPIError } from '../../redux/actions/simulateAPIErrorActions';
@@ -70,7 +76,10 @@ class CoursesPage extends React.Component {
 
         return (
             <>
-                {this.state.redirectToAddCoursePage && <Redirect to="/course" />}
+                {/*
+                Redirect to navigate 
+                 */}
+                {this.state.redirectToAddCoursePage && <Navigate to="/course" />}
                 <h2>Courses</h2>
 
                 {this.props.loading ? <Spinner /> : (

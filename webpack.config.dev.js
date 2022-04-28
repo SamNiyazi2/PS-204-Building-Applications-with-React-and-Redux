@@ -12,6 +12,15 @@ process.env.NODE_ENV = 'development';
 
 
 
+// 04/28/2022 10:30 am - SSN 
+// https://webpack.js.org/plugins/eslint-webpack-plugin/
+const ESLintPlugin_Webpack = require( 'eslint-webpack-plugin' );
+const options_ESLintPlugin = {
+
+};
+
+
+
 module.exports = {
 
     mode: 'development',
@@ -29,10 +38,16 @@ module.exports = {
         port: parseInt( process.env.port, 10 ),
         host: 'p3176.nonbs.org',
         open: true,
-        stats: 'minimal',
-        overlay: true, // Overlays any errors in the browsers
+
+
+
         historyApiFallback: true, // All requests will be sent to index.html. All deep links will be handled by React router.
-        disableHostCheck: true,
+
+        // 04/28/2022 09:07 am - SSN - Delted package-lock.json
+        // stats: 'minimal',
+        // overlay: true, // Overlays any errors in the browsers
+        // disableHostCheck: true,
+        allowedHosts: "p3176.nonbs.org",
         headers: {
             "access-control-allow-origin": "*",
             https: false
@@ -47,17 +62,43 @@ module.exports = {
             template: "src/index.html",
             favicon: "src/favicon.ico",
         } ),
+
+        // 04/28/2022 10:32 am - SSN 
+        // https://webpack.js.org/plugins/eslint-webpack-plugin/
+        new ESLintPlugin_Webpack( options_ESLintPlugin ),
+
+
     ],
     module: {
-        rules: [ {
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            use: [ "babel-loader", "eslint-loader" ],
-        },
-        {
-            test: /(\.css)$/,
-            use: [ "style-loader", "css-loader" ],
-        },
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    // 04/28/2022 11:46 am - SSN
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [ '@babel/preset-env', '@babel/preset-react' ]
+                    }
+                }
+
+
+                // 04/28/2022 10:18 am - SSN 
+                // use: [ "babel-loader", "eslint-loader" ],
+
+                // use: [ "babel-loader", "eslint-webpack-plugin" ],
+                // Error:
+                // Module build failed (from ./node_modules/eslint-webpack-plugin/dist/cjs.js):
+                // TypeError: Class constructor ESLintWebpackPlugin cannot be invoked without 'new'
+
+                // Ref: https://webpack.js.org/plugins/eslint-webpack-plugin/
+
+
+            },
+            {
+                test: /(\.css)$/,
+                use: [ "style-loader", "css-loader" ],
+            },
         ],
     },
 
