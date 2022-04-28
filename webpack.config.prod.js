@@ -18,7 +18,7 @@ process.env.NODE_ENV = mode;
 module.exports = {
 
     mode: mode,
-    target: 'node', //node web
+    target: 'web', //node
     devtool: 'source-map',
     entry: './src/index',
     output: {
