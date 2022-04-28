@@ -11,7 +11,7 @@ on:
 
 env:
 # 04/28/2022 03:41 pm - SSN
-  NODE_VERSION: '14.15.4'                # set this to the node version to use
+  NODE_VERSION: '14.15.4'                # set this to the node version to use 
 
 jobs:
   build_and_deploy_job:
