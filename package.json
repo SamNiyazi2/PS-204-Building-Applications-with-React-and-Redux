@@ -6,14 +6,12 @@
     "start:dev": "title %scriptKey_20210217_0853% && webpack-dev-server --config webpack.config.dev.js",
     "prestart:api": "node ./tools/createMockDb.js",
     "start:api": "title %scriptKey_20210218_0648% && node tools/apiServer.js  ",
-    "start:api_ForGitHub_action": "node tools/apiServer.js  ",
     "test": "title %scriptKey_20210219_0525% && jest --watch",
     "test:CI": "jest",
     "clean:build": "rimraf ./build && mkdir build",
     "prebuild_HOLD": "run-p clean:build test:CI",
     "build": "webpack --openssl-legacy-provider --config webpack.config.prod.js",
     "postbuild_onLocalOnly": "run-p start:api_ForGitHub_action serve:build",
-    "postbuild": "run-p start:api_ForGitHub_action",
     "serve:build": "http-server ./build"
   },
   "jest": {
