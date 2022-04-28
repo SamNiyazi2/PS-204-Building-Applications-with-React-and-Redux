@@ -8,7 +8,7 @@ const path = require( 'path' );
 const HtmlWebpackPlugin = require( "html-webpack-plugin" );
 
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const webpackBundleAnalyzer = require( 'webpack-bundle-analyzer' );
+//const webpackBundleAnalyzer = require( 'webpack-bundle-analyzer' );
 
 let mode = 'production';
 
@@ -18,7 +18,7 @@ process.env.NODE_ENV = mode;
 module.exports = {
 
     mode: mode,
-    target: 'web', //node
+    target: 'node', //node web
     devtool: 'source-map',
     entry: './src/index',
     output: {
