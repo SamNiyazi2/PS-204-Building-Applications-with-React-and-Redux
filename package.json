@@ -9,7 +9,7 @@
     "test": "title %scriptKey_20210219_0525% && jest --watch",
     "test:CI": "jest",
     "clean:build": "rimraf ./build && mkdir build",
-    "prebuild": "run-p clean:build test:CI",
+    "prebuild_HOLD": "run-p clean:build test:CI",
     "build": "webpack --config webpack.config.prod.js",
     "postbuild": "run-p start:api serve:build",
     "serve:build": "http-server ./build"

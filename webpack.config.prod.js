@@ -29,14 +29,14 @@ module.exports = {
 
     plugins: [
 
-        new webpackBundleAnalyzer.BundleAnalyzerPlugin( { analyzerMode: 'static' } ),
+        //       new webpackBundleAnalyzer.BundleAnalyzerPlugin( { analyzerMode: 'static' } ),
 
         new MiniCssExtractPlugin( { filename: '[name].[contenthash].css' } ),
 
-        new webpack.DefinePlugin( {
-            "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
-            "process.env.API_URL": JSON.stringify( "http://p3177.nonbs.org:3177" )
-        } ),
+        // new webpack.DefinePlugin( {
+        //     "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
+        //     "process.env.API_URL": JSON.stringify( "http://p3177.nonbs.org:3177" )
+        // } ),
 
         new HtmlWebpackPlugin( {
             template: "src/index.html",

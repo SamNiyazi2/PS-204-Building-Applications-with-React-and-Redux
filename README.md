@@ -6,7 +6,16 @@ Practicing [Plurasight course: Building Applications with React and Redux](https
 Pluralsight Author: [Cory House](https://www.pluralsight.com/authors/cory-house) 
  
 
+ 
+  
+   
+    
 
+
+     
+      
+       
+       
 
 
 
