@@ -35,7 +35,7 @@ module.exports = {
 
         new webpack.DefinePlugin( {
             "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
-            "process.env.API_URL": JSON.stringify( "http://127.0.0.1:3333" )
+            "process.env.API_URL": JSON.stringify( ":3333" )
         } ),
 
         new HtmlWebpackPlugin( {
