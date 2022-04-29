@@ -1,10 +1,10 @@
 import { handleResponse, handleError } from "./apiUtils";
 
 // 04/29/2022 12:30 am - SSN - APPSETTING_
-let baseUrl = process.env.API_URL + "/courses/";
+let baseUrl = process.env.APPSETTING_API_URL + "/courses/";
 
 if ( baseUrl == null ) {
-  baseUrl = process.env.APPSETTING_API_URL + "/courses/";
+  baseUrl = process.env.API_URL + "/courses/";
 }
 
 export function getCourses() {
