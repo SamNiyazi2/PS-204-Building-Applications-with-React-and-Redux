@@ -34,9 +34,8 @@ module.exports = {
         new MiniCssExtractPlugin( { filename: '[name].[contenthash].css' } ),
 
         new webpack.DefinePlugin( {
-            "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV )
-            //,
-            // "process.env.API_URL": JSON.stringify( ":3333" )
+            "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
+            "process.env.API_URL": JSON.stringify( ":3333" )
         } ),
 
         new HtmlWebpackPlugin( {
