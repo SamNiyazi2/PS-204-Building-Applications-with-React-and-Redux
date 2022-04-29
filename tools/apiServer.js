@@ -49,9 +49,9 @@ server.use( ( req, res, next ) => {
 server.get( "/config", function ( req, res, next ) {
 
   console.log( '%c ' + 'apiService config 20220429-0748', 'color:red;font-size:20pt;' );
-  console.dir( process.env.ps204_api_url );
+  console.dir( process.env.APPSETTING_ps204_api_url );
   console.dir( process.env );
-  const value = process.env.ps204_api_url;
+  const value = process.env.APPSETTING_ps204_api_url;
   const jsonResult = { test102: value };
 
   res.json( jsonResult );
