@@ -45,6 +45,20 @@ server.use( ( req, res, next ) => {
   next();
 } );
 
+
+server.get( "/config", function ( req, res, next ) {
+
+  console.log( '%c ' + 'apiService config 20220429-0748', 'color:red;font-size:20pt;' );
+  console.dir( process.env.ps204_api_url );
+  console.dir( process.env );
+  const value = process.env.ps204_api_url;
+  const jsonResult = { test102: value };
+
+  res.json( jsonResult );
+
+} );
+
+
 server.post( "/courses/", function ( req, res, next ) {
   const error = validateCourse( req.body );
   if ( error ) {
