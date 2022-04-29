@@ -48,6 +48,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'PS-204-Building-Applications-with-React-and-Redux'
-        slot-name: 'Production'
+#        slot-name: 'Production'
         publish-profile: ${{ secrets.secret1 }}
         package: 'build'
