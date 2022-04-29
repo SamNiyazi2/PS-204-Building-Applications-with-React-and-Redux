@@ -2,17 +2,19 @@
 # 04/28/2022 06:67 pm - SSN
 # Source: https://github.com/Azure/webapps-deploy
 
-on: push
-
+on: 
+  push:
+    branches:
+      - main
 
 
 jobs:
   build-and-deploy:
-    runs-on: windows-2016
+    runs-on: windows-latest
     steps:
     # checkout the repo
     - name: 'Checkout Github Action' 
-      uses: actions/checkout@main
+      uses: actions/checkout@v2
 
     - name: Setup Node 14.x
       uses: actions/setup-node@v1
@@ -27,5 +29,6 @@ jobs:
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: node-rn
+        app-name: 'PS-204-Building-Applications-with-React-and-Redux'
+        slot-name: 'Production'
         publish-profile: ${{ secrets.secret1 }}
