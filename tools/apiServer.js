@@ -73,7 +73,7 @@ server.post( "/courses/", function ( req, res, next ) {
 server.use( router );
 
 // Start server
-const port = process.env.port || 3333;
+const port = process.env.port || 443; // 3333
 server.listen( port, () => {
   console.log( `JSON Server is running on port ${port}` );
 } );

@@ -40,9 +40,9 @@ jobs:
 
          # working-directory: 'build'
 
-        xcopy /y tools\ build\tools\
+#        xcopy /y tools\ build\tools\
 
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
+    - name: 'Run Azure webapp deploy action using publish profile credentials - WEB'
 # https://docs.microsoft.com/en-us/azure/app-service/deploy-github-actions?tabs=applevel#configure-the-github-secret    
 # https://docs.microsoft.com/en-us/azure/app-service/deploy-github-actions?tabs=applevel#javascript
       uses: azure/webapps-deploy@v2
@@ -51,3 +51,13 @@ jobs:
 #        slot-name: 'Production'
         publish-profile: ${{ secrets.secret1 }}
         package: 'build'
+
+
+
+    - name: 'Run Azure webapp deploy action using publish profile credentials - API'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'PS-204-Building-Applications-with-React-and-Redux-API'
+#        slot-name: 'Production'
+        publish-profile: ${{ secrets.secret2 }}
+        package: 'tools'
