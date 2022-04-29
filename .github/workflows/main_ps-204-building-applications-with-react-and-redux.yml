@@ -38,7 +38,7 @@ jobs:
         npm run build --if-present
         npm run test --if-present
 
-# working-directory: dir if not in the root
+         # working-directory: 'build'
 
 
 
@@ -50,4 +50,4 @@ jobs:
         app-name: 'PS-204-Building-Applications-with-React-and-Redux'
         slot-name: 'Production'
         publish-profile: ${{ secrets.secret1 }}
-# package: if not in the root
+        package: 'build'
