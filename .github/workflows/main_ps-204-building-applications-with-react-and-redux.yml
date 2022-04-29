@@ -40,7 +40,7 @@ jobs:
 
          # working-directory: 'build'
 
-
+        xcopy /y tools\ build\tools\
 
     - name: 'Run Azure webapp deploy action using publish profile credentials'
 # https://docs.microsoft.com/en-us/azure/app-service/deploy-github-actions?tabs=applevel#configure-the-github-secret    
