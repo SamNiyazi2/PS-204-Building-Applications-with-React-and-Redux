@@ -35,7 +35,7 @@ module.exports = {
 
         new webpack.DefinePlugin( {
             "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
-            "process.env.API_URL": JSON.stringify( ":3333" )
+            "process.env.API_URL": JSON.stringify( "https://ps-204-building-applications-with-react-and-redux.azurewebsites.net:3333/" )
         } ),
 
         new HtmlWebpackPlugin( {
