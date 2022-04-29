@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <nav>
-            <p>({activeStyle.color}) ({process.env.API_URL})</p>
+            <p>({activeStyle.color}) ({process.env.API_URL})  ({process.env.REACT_APP_API_URL})</p>
             <NavLink to="/" activeStyle={activeStyle} exact>Home</NavLink>{" | "}
             <NavLink to="/courses" activeStyle={activeStyle} exact>Courses</NavLink>{" | "}
             <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>
