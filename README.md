@@ -1,7 +1,7 @@
 
 
 # PS-204 - Building Applications with React and Redux
-Practicing [Plurasight course: Building Applications with React and Redux](https://app.pluralsight.com/library/courses/react-redux-react-router-es6/table-of-contents) 
+Practicing [Pluralsight course: Building Applications with React and Redux](https://app.pluralsight.com/library/courses/react-redux-react-router-es6/table-of-contents) 
 
 Pluralsight Author: [Cory House](https://www.pluralsight.com/authors/cory-house) 
  
