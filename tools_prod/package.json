@@ -1,0 +1,9 @@
+{
+  "name": "ps-redux",
+  "description": "React and Redux Pluralsight course by Cory House",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "0.9.0"
+  }
+}
