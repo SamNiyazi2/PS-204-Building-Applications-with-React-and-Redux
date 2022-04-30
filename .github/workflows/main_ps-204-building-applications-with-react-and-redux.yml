@@ -52,12 +52,3 @@ jobs:
         publish-profile: ${{ secrets.secret1 }}
         package: 'build'
 
-
-
-    - name: 'Run Azure webapp deploy action using publish profile credentials - API'
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'PS-204-Building-Applications-with-React-and-Redux-API'
-#        slot-name: 'Production'
-        publish-profile: ${{ secrets.secret2 }}
-        package: 'build'
