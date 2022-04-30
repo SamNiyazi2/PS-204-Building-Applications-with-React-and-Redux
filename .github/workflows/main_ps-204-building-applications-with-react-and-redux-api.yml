@@ -27,7 +27,7 @@ jobs:
           #npm run build --if-present
           #npm run test --if-present
             
-          cp -u tools/. tools_prod
+          cp -2 -u tools/. tools_prod
 
           cp -u package.json tools_prod
 
