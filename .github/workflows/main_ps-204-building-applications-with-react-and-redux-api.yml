@@ -29,7 +29,7 @@ jobs:
             
           cp -r tools/. tools_prod
 
-          cp  package.json tools_prod
+          #cp  package.json tools_prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
