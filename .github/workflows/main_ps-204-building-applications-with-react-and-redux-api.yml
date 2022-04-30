@@ -23,15 +23,19 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install
-      #    npm run build --if-present
-      #    npm run test --if-present
+          #npm install
+          #npm run build --if-present
+          #npm run test --if-present
+            
+          xcopy /y tools/ tools_prod/
+
+          xcopy /y package.json toools_prod/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: tools
+          path: tools_prod
 
   deploy:
     runs-on: ubuntu-latest
