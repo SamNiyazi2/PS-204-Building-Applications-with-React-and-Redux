@@ -38,7 +38,7 @@ const Header = () => {
 
     return (
         <nav>
-            <p>({activeStyle.color}) ({process.env.API_URL})  ({endpoints ? endpoints.API_URL : ""})</p>
+            <p>({activeStyle.color}) ({process.env.API_URL})  ({( endpoints && endpoints.testbag102 ) ? endpoints.testbag102.APPSETTING_ps204_api_url : ""})</p>
             <NavLink to="/" activeStyle={activeStyle} exact>Home</NavLink>{" | "}
             <NavLink to="/courses" activeStyle={activeStyle} exact>Courses</NavLink>{" | "}
             <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>

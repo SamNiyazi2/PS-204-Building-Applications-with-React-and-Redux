@@ -33,9 +33,13 @@ module.exports = {
 
         new MiniCssExtractPlugin( { filename: '[name].[contenthash].css' } ),
 
+        //"process.env.API_URL": JSON.stringify( "https://ps-204-building-applications-with-react-and-redux-API.azurewebsites.net/" )
+        //ps204_api_url=
+
+
         new webpack.DefinePlugin( {
             "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
-            "process.env.API_URL": JSON.stringify( "https://ps-204-building-applications-with-react-and-redux-API.azurewebsites.net/" )
+            "process.env.API_URL": JSON.stringify( "http://p3178.nonbs.org:3178" )
         } ),
 
         new HtmlWebpackPlugin( {
@@ -54,7 +58,7 @@ module.exports = {
                 minifyCSS: true,
                 minifyURLs: true
             }
-        } ),
+        } )
     ],
 
     module: {

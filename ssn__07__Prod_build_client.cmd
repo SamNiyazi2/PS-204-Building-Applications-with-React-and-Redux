@@ -17,7 +17,7 @@ echo %2
  
 
 rem start npm  run build:%1
-start npm  run build
+start npm  run build:local
 
 rem echo Wait for signal...
 rem waitfor productionVer20200822 /T 60
