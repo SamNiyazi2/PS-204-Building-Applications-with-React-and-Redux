@@ -16,6 +16,31 @@ const server = jsonServer.create();
 const path = require( "path" );
 const router = jsonServer.router( path.join( __dirname, "db.json" ) );
 
+
+// 04/30/2022 05:34 pm - SSN - Adding CORS
+const cors = require( 'cors' );
+// server.use(cors);
+
+
+// Set up a domainList and check against it:
+const domainList = [ 'https://ps-204-building-applications-with-react-and-redux.azurewebsites.net',
+  'http://p3176.nonbs.org:3176' ]
+
+const corsOptions = {
+  origin: function ( origin, callback ) {
+    if ( domainList.indexOf( origin ) !== -1 ) {
+      callback( null, true )
+    } else {
+      callback( new Error( 'Not allowed by CORS' ) )
+    }
+  },
+}
+
+// Then pass them to cors:
+server.use( cors( corsOptions ) );
+
+
+
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults( {
   // Display json-server's built in homepage when json-server starts.
