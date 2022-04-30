@@ -39,7 +39,8 @@ module.exports = {
 
         new webpack.DefinePlugin( {
             "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
-            "process.env.API_URL": JSON.stringify( "http://p3178.nonbs.org:3178" )
+            // 04/30/2022 10:58 am - SSN - Take out
+            // "process.env.API_URL": JSON.stringify( "http://p3178.nonbs.org:3178" )
         } ),
 
         new HtmlWebpackPlugin( {
