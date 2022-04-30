@@ -27,9 +27,9 @@ jobs:
           #npm run build --if-present
           #npm run test --if-present
             
-          xcopy /y tools/ tools_prod/
+          cp /r tools/. tools_prod
 
-          xcopy /y package.json toools_prod/
+          cp -u package.json tools_prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
