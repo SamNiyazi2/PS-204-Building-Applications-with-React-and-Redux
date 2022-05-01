@@ -9,8 +9,7 @@ const HtmlWebpackPlugin = require( "html-webpack-plugin" );
 
 // 04/30/2022 10:06 pm - SSN - Copy web.config
 // https://webpack.js.org/plugins/copy-webpack-plugin/
-// const CopyPlugIn = require( "copy-webpack-plugin" );
-// Wrong approach.
+const CopyPlugIn = require( "copy-webpack-plugin" );
 
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const { web } = require( 'webpack' );
@@ -20,6 +19,7 @@ let mode = 'production';
 
 process.env.NODE_ENV = mode;
 
+const BUILD_DIR = path.resolve( __dirname, 'build' );
 
 module.exports = {
 
@@ -28,7 +28,7 @@ module.exports = {
     devtool: 'source-map',
     entry: './src/index',
     output: {
-        path: path.resolve( __dirname, 'build' ),
+        path: BUILD_DIR,
         publicPath: '/',
         filename: 'bundle.js'
     },
@@ -39,14 +39,18 @@ module.exports = {
 
         new MiniCssExtractPlugin( { filename: '[name].[contenthash].css' } ),
 
-        //"process.env.API_URL": JSON.stringify( "https://ps-204-building-applications-with-react-and-redux-API.azurewebsites.net/" )
+
         //ps204_api_url=
 
 
         new webpack.DefinePlugin( {
             "process.env.NODE_ENV": JSON.stringify( process.env.NODE_ENV ),
             // 04/30/2022 10:58 am - SSN - Take out
+            // Works for Azure. 
             "process.env.API_URL": JSON.stringify( "https://ps-204-building-applications-with-react-and-redux-api.azurewebsites.net/" )
+            // For local test.
+            // "process.env.API_URL": JSON.stringify( "http://p3179.nonbs.org:3179" )
+
         } ),
 
         new HtmlWebpackPlugin( {
@@ -67,10 +71,16 @@ module.exports = {
             }
         } ),
 
-        new HtmlWebpackPlugin( {
-            filename: "web.config",
-            template: "src/web.config"
-        } )
+
+
+        new CopyPlugIn(
+            [
+
+                { from: "./src/web.config", to: BUILD_DIR }
+
+            ]
+        )
+
     ],
 
     module: {

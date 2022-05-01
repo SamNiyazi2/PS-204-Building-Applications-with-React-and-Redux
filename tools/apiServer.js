@@ -24,7 +24,8 @@ const cors = require( 'cors' );
 
 // Set up a domainList and check against it:
 const domainList = [ 'https://ps-204-building-applications-with-react-and-redux.azurewebsites.net',
-  'http://p3176.nonbs.org:3176' ]
+  'http://p3176.nonbs.org:3176',
+  'http://p3178.nonbs.org:3178' ]
 
 const corsOptions = {
   origin: function ( origin, callback ) {
