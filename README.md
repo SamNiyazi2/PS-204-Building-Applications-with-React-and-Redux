@@ -12,7 +12,12 @@ Pluralsight Author: [Cory House](https://www.pluralsight.com/authors/cory-house)
 
 
  
-  
+
+
+[![Build and deploy Node.js web app ](https://github.com/SamNiyazi2/PS-204-Building-Applications-with-React-and-Redux/actions/workflows/main_ps-204-building-applications-with-react-and-redux.yml/badge.svg)](https://github.com/SamNiyazi2/PS-204-Building-Applications-with-React-and-Redux/actions/workflows/main_ps-204-building-applications-with-react-and-redux.yml)
+
+[![Build and deploy Node.js API](https://github.com/SamNiyazi2/PS-204-Building-Applications-with-React-and-Redux/actions/workflows/main_ps-204-building-applications-with-react-and-redux-api.yml/badge.svg)](https://github.com/SamNiyazi2/PS-204-Building-Applications-with-React-and-Redux/actions/workflows/main_ps-204-building-applications-with-react-and-redux-api.yml)
+
    
     
 
