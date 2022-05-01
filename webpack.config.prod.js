@@ -7,7 +7,13 @@ const path = require( 'path' );
 
 const HtmlWebpackPlugin = require( "html-webpack-plugin" );
 
+// 04/30/2022 10:06 pm - SSN - Copy web.config
+// https://webpack.js.org/plugins/copy-webpack-plugin/
+const CopyPlugIn = require( "copy-webpack-plugin" );
+
+
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const { web } = require( 'webpack' );
 //const webpackBundleAnalyzer = require( 'webpack-bundle-analyzer' );
 
 let mode = 'production';
@@ -59,6 +65,10 @@ module.exports = {
                 minifyCSS: true,
                 minifyURLs: true
             }
+        } ),
+
+        new CopyPlugIn( {
+            from: path.resolve( __dirname, "web.config" )
         } )
     ],
 
