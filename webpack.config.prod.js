@@ -9,8 +9,8 @@ const HtmlWebpackPlugin = require( "html-webpack-plugin" );
 
 // 04/30/2022 10:06 pm - SSN - Copy web.config
 // https://webpack.js.org/plugins/copy-webpack-plugin/
-const CopyPlugIn = require( "copy-webpack-plugin" );
-
+// const CopyPlugIn = require( "copy-webpack-plugin" );
+// Wrong approach.
 
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const { web } = require( 'webpack' );
@@ -67,8 +67,9 @@ module.exports = {
             }
         } ),
 
-        new CopyPlugIn( {
-            from: path.resolve( __dirname, "web.config" )
+        new HtmlWebpackPlugin( {
+            filename: "web.config",
+            template: "src/web.config"
         } )
     ],
 
