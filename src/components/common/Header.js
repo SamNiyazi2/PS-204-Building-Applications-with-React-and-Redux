@@ -14,10 +14,10 @@ const Header = () => {
             <NavLink to="/" activeStyle={activeStyle} exact>Home</NavLink>{" | "}
             <NavLink to="/courses" activeStyle={activeStyle} exact>Courses</NavLink>{" | "}
             <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>
-            &nbsp; | &nbsp;
+            {/* &nbsp; | &nbsp;
             <AppLink href="/" activeStyle={activeStyle} >Home</AppLink>{" | "}
             <AppLink href="/courses" activeStyle={activeStyle} >Courses</AppLink>{" | "}
-            <AppLink href="/about" activeStyle={activeStyle}>About</AppLink>
+            <AppLink href="/about" activeStyle={activeStyle}>About</AppLink> */}
 
         </nav>
 

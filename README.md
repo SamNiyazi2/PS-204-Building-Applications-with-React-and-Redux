@@ -14,8 +14,8 @@ Pluralsight Author: [Cory House](https://www.pluralsight.com/authors/cory-house)
  
 
 
-![Build and deploy Node.js web app and API  ](https://github.com/SamNiyazi2/PS-204-Building-Applications-with-React-and-Redux/actions/workflows/main_ps-204-building-applications-with-react-and-redux.yml/badge.svg) 
+[![Build](https://github.com/SamNiyazi2/PS-204-Building-Applications-with-React-and-Redux/actions/workflows/main_ps-204-building-applications-with-react-and-redux.yml/badge.svg)](https://github.com/SamNiyazi2/PS-204-Building-Applications-with-React-and-Redux/actions/workflows/main_ps-204-building-applications-with-react-and-redux.yml/badge.svg) 
 
  
 
- 
+ <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/samniyazi2/PS-204-Building-Applications-with-React-and-Redux/main_ps-204-building-applications-with-react-and-redux.yml/main?style=for-the-badge">
