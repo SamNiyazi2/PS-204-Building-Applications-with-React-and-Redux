@@ -26,6 +26,7 @@ const CourseList = ( { courses, onDeleteClick } ) => (
             <td>
               <a
                 className="btn btn-light"
+                target={"win_" + course.slug}
                 href={"http://pluralsight.com/courses/" + course.slug}
               >
                 Watch

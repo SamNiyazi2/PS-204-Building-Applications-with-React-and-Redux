@@ -40,6 +40,11 @@ class CoursesPage extends React.Component {
 
     handleDeleteCourse = async course => {
 
+        // 11/23/2022 08:20 pm - SSN - Add confirmation
+        if ( !confirm( "You can't undo deletes.\n\nAre you sure you want to delete record?" ) ) {
+            return;
+        }
+
         let courseId = course.id;
         let courseIndex = this.props.courses.indexOf( course );
 
